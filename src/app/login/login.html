@@ -1,0 +1,58 @@
+<main class="login-page">
+  <section class="login-card" aria-labelledby="login-title">
+    <div class="card-header">
+      <div>
+        <span class="eyebrow">Área do usuário</span>
+        <h1 id="login-title">Entrar</h1>
+      </div>
+
+      <a class="create-account" href="#criar-conta">Criar conta</a>
+    </div>
+
+    <p class="intro">Informe seus dados para acessar sua conta.</p>
+
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" novalidate>
+      <div class="field">
+        <label for="email">E-mail</label>
+        <input
+          #email="ngModel"
+          id="email"
+          name="email"
+          type="email"
+          [(ngModel)]="loginData.email"
+          placeholder="voce@exemplo.com"
+          autocomplete="email"
+          required
+          email
+        />
+        @if (email.invalid && email.touched) {
+          <span class="field-error">Digite um e-mail válido.</span>
+        }
+      </div>
+
+      <div class="field">
+        <label for="senha">Senha</label>
+        <input
+          #senha="ngModel"
+          id="senha"
+          name="senha"
+          type="password"
+          [(ngModel)]="loginData.senha"
+          placeholder="Digite sua senha"
+          autocomplete="current-password"
+          required
+          minlength="6"
+        />
+        @if (senha.invalid && senha.touched) {
+          <span class="field-error">A senha deve ter pelo menos 6 caracteres.</span>
+        }
+      </div>
+
+      <div class="form-actions">
+        <a href="#esqueci-a-senha">Esqueci a senha</a>
+      </div>
+
+      <button class="submit-button" type="submit">Entrar</button>
+    </form>
+  </section>
+</main>

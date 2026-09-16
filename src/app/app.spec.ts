@@ -5,8 +5,7 @@ describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [App],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   it('should create the app', () => {
@@ -15,10 +14,13 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render title', async () => {
+  it('should render the login form', async () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Samuel-Login-Web');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Entrar');
+    expect(compiled.querySelector('input[type="email"]')).toBeTruthy();
+    expect(compiled.querySelector('input[type="password"]')).toBeTruthy();
+    expect(compiled.querySelector('button[type="submit"]')?.textContent).toContain('Entrar');
   });
 });
